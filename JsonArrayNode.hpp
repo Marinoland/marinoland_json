@@ -3,7 +3,7 @@
 
 #include "JsonNode.hpp"
 
-class JsonNullNode : public JsonNode {
+class JsonArrayNode : public JsonNode {
 public: 
 private:
 };

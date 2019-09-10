@@ -7,6 +7,8 @@ build-debug: lib/libJson.a
 
 build-release: lib/libJson.a
 
+sample: lib/libJson.a
+	$(CPP) -o tester tester.cpp lib/libJson.a
 
 ###############
 ##
@@ -22,7 +24,7 @@ clean:
 ##
 ###############
 lib/libJson.a: *.o
-	ar ru lib/libJson.a json/*.o
+	ar ru lib/libJson.a *.o
 
 ###############
 ##
