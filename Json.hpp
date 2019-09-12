@@ -13,7 +13,7 @@
 #include "JsonObjectNode.hpp"
 
 namespace json {
-    int parse(std::string src, std::function<void(std::shared_ptr<JsonNode>)> f);
+    void parse(std::string src, std::function<void(nodeptr)> f, std::function<void(std::string)> e);
 }
 
 #endif

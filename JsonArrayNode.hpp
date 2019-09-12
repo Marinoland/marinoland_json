@@ -2,10 +2,16 @@
 #define __JSONARRAYNODE_HPP__
 
 #include "JsonNode.hpp"
+#include <vector>
 
-class JsonArrayNode : public JsonNode {
-public: 
-private:
-};
+namespace json {
+    class JsonArrayNode : public JsonNode {
+    public: 
+        void add(nodeptr node);
+        std::string to_string();
+    private:
+        std::vector<nodeptr> data;
+    };
+}
 
 #endif

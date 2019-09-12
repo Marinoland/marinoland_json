@@ -3,9 +3,15 @@
 
 #include "JsonNode.hpp"
 
-class JsonFloatNode : public JsonNode {
-public: 
-private:
-};
+namespace json {
+
+    class JsonFloatNode : public JsonNode {
+    public: 
+        JsonFloatNode(float newVal) : val(newVal){}
+        std::string to_string();
+    private:
+        float val;
+    };
+}
 
 #endif

@@ -3,9 +3,18 @@
 
 #include "JsonNode.hpp"
 
-class JsonBooleanNode : public JsonNode {
-public: 
-private:
-};
+namespace json {
+
+    class JsonBooleanNode : public JsonNode {
+    public: 
+        JsonBooleanNode(int newFlag) : flag(newFlag) { }
+        std::string to_string() {
+            return flag?"true":"false";
+        }
+    private:
+        int flag;
+    };
+
+}
 
 #endif
