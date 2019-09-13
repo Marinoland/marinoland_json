@@ -10,13 +10,13 @@ namespace json
     string JsonArrayNode::to_string()
     {
         stringstream ss;
-        ss << "[ ";
+        ss << "[";
         for(vector<nodeptr>::iterator i = data.begin(); i != data.end(); i++)
         {
-            if(i != data.begin()) ss << ", ";
+            if(i != data.begin()) ss << ",";
             ss << (*i)->to_string();
         }
-        ss << " ]";
+        ss << "]";
         return ss.str();
     }
     void JsonArrayNode::add(nodeptr node) {

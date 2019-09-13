@@ -13,7 +13,9 @@ int main(int argc, char **argv)
         "false",
         "true",
         "\" should fail",
-        " [\"test\", [700, \"bl\\\"ah\\n\\\\blah\" ], true, false, [null, 0.4 ]]"
+        " [\"test\", [700, \"bl\\\"ah\\n\\\\blah\" ], true, false, [null, 0.4 ]]",
+        "{\"blah\": \"test\"}",
+        "{\"arr\": [], \"arr2\":[ 2, {},]}"
     };
     for(string try_this : things_to_try)
     {

@@ -2,6 +2,7 @@
 #define __JSONOBJECTNODE_HPP__
 
 #include "JsonNode.hpp"
+#include <string>
 #include <map>
 
 namespace json {
@@ -10,7 +11,7 @@ namespace json {
         void set(std::string key, nodeptr);
         std::string to_string();
     private:
-        std::map<string, nodeptr> values;
+        std::map<std::string, nodeptr> values;
     };
 }
 
