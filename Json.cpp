@@ -6,11 +6,9 @@ using namespace std;
 
 namespace json
 {
-
     char *skipwhite(char *c)
     {
-        while(*c == ' ' || *c == '\t' ||
-            *c == '\n' || *c == '\r') c++;
+        while(*c == ' ' || *c == '\t' || *c == '\n' || *c == '\r') c++;
         return c;
     }
 
@@ -53,25 +51,20 @@ namespace json
         return false;
     }
 
-    int stop_float(char *c, success s, failure f)
+    int stop_num(char *c, success s, failure f)
     {
         string str1, str2;
-        while(*c >= '0' && *c <= '9') {str1 += *c; c++;}
+        while(*c >= '0' && *c <= '9') {str1 += *c; ++c;}
         if(str1.length() == 0) return false;
-        if(*c != '.') return false;
-        c++;
-        while(*c >= '0' && *c <= '9') {str2 += *c; c++;}
-        if(str2.length() == 0) return false;
-        s(c, make_shared<JsonFloatNode>(::atof((str1 + '.' + str2).c_str())));
-        return true;
-    }
-
-    int stop_int(char *c, success s, failure f)
-    {
-        string str1;
-        while(*c >= '0' && *c <= '9') {str1 += *c; c++;}
-        if(str1.length() == 0) return false;
-        s(c, make_shared<JsonIntNode>(::atof(str1.c_str())));
+        if(*c == '.') 
+        {
+            ++c;
+            while(*c >= '0' && *c <= '9') {str2 += *c; c++;}
+            if(str2.length() == 0) return false;
+            s(c, make_shared<JsonFloatNode>(::atof((str1 + '.' + str2).c_str())));
+        } else {
+            s(c, make_shared<JsonIntNode>(::atoi(str1.c_str())));
+        }
         return true;
     }
 
@@ -82,12 +75,12 @@ namespace json
             return false;
         }
         string str;
-        c++;
+        ++c;
         while(*c != '"')
         {
             if(!*c)
             {
-                f(c, "Unexpected end of string while reading string");
+                f(c, "Unexpected end of file while reading string");
                 return 1;
             }
             if(match(c, (char*)"\\\"")) {str+="\""; c+=2;}
@@ -266,8 +259,7 @@ namespace json
         if( stop_string(c, handleNode, handleFailure) ||
             stop_array(c, handleNode, handleFailure) ||
             stop_object(c, handleNode, handleFailure) ||
-            stop_float(c, handleNode, handleFailure) ||
-            stop_int(c, handleNode, handleFailure) ||
+            stop_num(c, handleNode, handleFailure) ||
             stop_null(c, handleNode, handleFailure) ||
             stop_boolean(c, handleNode, handleFailure))
         {
