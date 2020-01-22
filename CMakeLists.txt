@@ -15,5 +15,5 @@ add_library(json SHARED
     JsonObjectNode.cpp
     JsonStringNode.cpp)
 
-add_executable(sample sample.cpp)
-target_link_libraries(sample LINK_PUBLIC json)
+add_executable(test test.cpp)
+target_link_libraries(test LINK_PUBLIC json)

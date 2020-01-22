@@ -9,6 +9,12 @@ namespace json {
     public: 
         void add(nodeptr node);
         std::string to_string();
+        std::vector<nodeptr>::iterator begin() {
+            return data.begin();
+        }
+        std::vector<nodeptr>::iterator end() {
+            return data.end();
+        }
     private:
         std::vector<nodeptr> data;
     };
