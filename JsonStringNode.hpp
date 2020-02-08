@@ -8,6 +8,7 @@ namespace json {
     public: 
         JsonStringNode(std::string str) : val(str) {}
         std::string getString() {return val;}
+        std::string to_json();
         std::string to_string();
     private:
         std::string val;

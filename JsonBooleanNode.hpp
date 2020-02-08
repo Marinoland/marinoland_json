@@ -8,7 +8,7 @@ namespace json {
     class JsonBooleanNode : public JsonNode {
     public: 
         JsonBooleanNode(int newFlag) : flag(newFlag) { }
-        std::string to_string() {
+        std::string to_json() {
             return flag?"true":"false";
         }
     private:

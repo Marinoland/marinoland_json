@@ -4,7 +4,7 @@
 using namespace std;
 
 namespace json {
-    string JsonFloatNode::to_string() {
+    string JsonFloatNode::to_json() {
         return ::to_string(val);
     }
 }

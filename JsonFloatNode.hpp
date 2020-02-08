@@ -8,7 +8,7 @@ namespace json {
     class JsonFloatNode : public JsonNode {
     public: 
         JsonFloatNode(float newVal) : val(newVal){}
-        std::string to_string();
+        std::string to_json();
     private:
         float val;
     };

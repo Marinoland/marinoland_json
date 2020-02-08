@@ -4,9 +4,17 @@ using namespace std;
 
 namespace json {
 
-    string JsonStringNode::to_string()
+    string JsonStringNode::to_json()
     {
         string ret = "\"";
+        ret += to_string();
+        ret += '"';
+        return ret;
+    }
+
+    string JsonStringNode::to_string()
+    {
+        string ret = "";
         for(char c : val)
         {
             if(c=='\"') ret += "\\\"";
@@ -18,7 +26,6 @@ namespace json {
             else if(c=='\t') ret += "\\t";
             else ret += c;
         }
-        ret += '"';
         return ret;
     }
 }
