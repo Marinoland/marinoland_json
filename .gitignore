@@ -27,6 +27,7 @@
 *.lib
 
 # Executables
+test
 *.exe
 *.out
 *.app
@@ -36,3 +37,12 @@ Makefile
 CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
+
+# visual studio stuff
+.vs
+*.vcxproj*
+json.dir
+json.sln
+x64
+test.dir
+test.exe.dir
