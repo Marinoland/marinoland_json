@@ -3,14 +3,14 @@ project (json)
 
 include_directories(/usr/include)
 
-file(depend.libs web)
-file(depend.includedirs ${CMAKE_CURRENT_SOURCE_DIR})
+file(WRITE depend.libs web)
+file(WRITE depend.includedirs ${CMAKE_CURRENT_SOURCE_DIR})
 IF (WIN32)
     add_definitions(-D_WIN32_WINNT=0x0601)
-    file(depend.linkdirs ${CMAKE_CURRENT_SOURCE_DIR}/Release)
+    file(WRITE depend.linkdirs ${CMAKE_CURRENT_SOURCE_DIR}/Release)
 ELSE()
     add_definitions(-std=c++11)
-    file(depend.linkdirs ${CMAKE_CURRENT_SOURCE_DIR})
+    file(WRITE depend.linkdirs ${CMAKE_CURRENT_SOURCE_DIR})
 ENDIF()
 
 
