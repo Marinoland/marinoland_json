@@ -3,7 +3,7 @@ project (json)
 
 include_directories(/usr/include)
 
-file(WRITE depend.libs web)
+file(WRITE depend.libs json)
 file(WRITE depend.includedirs ${CMAKE_CURRENT_SOURCE_DIR})
 IF (WIN32)
     add_definitions(-D_WIN32_WINNT=0x0601)
