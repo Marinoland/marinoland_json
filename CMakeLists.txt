@@ -2,11 +2,17 @@ cmake_minimum_required(VERSION 2.8)
 project (json)
 
 include_directories(/usr/include)
+
+file(depend.libs web)
+file(depend.includedirs ${CMAKE_CURRENT_SOURCE_DIR})
 IF (WIN32)
     add_definitions(-D_WIN32_WINNT=0x0601)
+    file(depend.linkdirs ${CMAKE_CURRENT_SOURCE_DIR}/Release)
 ELSE()
     add_definitions(-std=c++11)
+    file(depend.linkdirs ${CMAKE_CURRENT_SOURCE_DIR})
 ENDIF()
+
 
 add_library(json STATIC
     Json.cpp
