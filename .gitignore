@@ -27,7 +27,7 @@
 *.lib
 
 # Executables
-test
+build
 *.exe
 *.out
 *.app
