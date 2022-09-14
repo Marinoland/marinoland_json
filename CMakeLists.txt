@@ -15,14 +15,14 @@ ENDIF()
 
 add_library(json STATIC
     src/Json.cpp
-    src/JsonArrayNode.cpp
-    src/JsonBooleanNode.cpp
-    src/JsonFloatNode.cpp
-    src/JsonIntNode.cpp
-    src/JsonNode.cpp
-    src/JsonNullNode.cpp
-    src/JsonObjectNode.cpp
-    src/JsonStringNode.cpp)
+    src/ArrayNode.cpp
+    src/BooleanNode.cpp
+    src/FloatNode.cpp
+    src/IntNode.cpp
+    src/Node.cpp
+    src/NullNode.cpp
+    src/ObjectNode.cpp
+    src/StringNode.cpp)
 
 add_executable(test test/test.cpp)
 link_directories(${CMAKE_CURRENT_BINARY_DIR})

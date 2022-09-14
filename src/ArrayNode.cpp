@@ -1,4 +1,4 @@
-#include "JsonArrayNode.hpp"
+#include "json/ArrayNode.hpp"
 
 #include <sstream>
 
@@ -7,7 +7,7 @@ using namespace std;
 namespace json
 {
 
-    string JsonArrayNode::to_json()
+    string ArrayNode::to_json()
     {
         stringstream ss;
         ss << "[";
@@ -19,7 +19,7 @@ namespace json
         ss << "]";
         return ss.str();
     }
-    void JsonArrayNode::add(nodeptr node) {
+    void ArrayNode::add(nodeptr node) {
         data.push_back(node);
     }
 

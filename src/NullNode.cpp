@@ -1,10 +1,10 @@
-#include "JsonNullNode.hpp"
+#include "json/NullNode.hpp"
 
 using namespace std;
 
 namespace json {
 
-    string JsonNullNode::to_json() {
+    string NullNode::to_json() {
         return "null";
     }
 }

@@ -1,4 +1,4 @@
-#include "Json.hpp"
+#include "json/Json.hpp"
 #include <iostream>
 
 using namespace std;
@@ -30,7 +30,7 @@ namespace json
     {
         if(match(c, (char*)"null"))
         {
-            s(c+4, make_shared<JsonNullNode>());
+            s(c+4, make_shared<NullNode>());
             return true;
         }
         return false;
@@ -40,12 +40,12 @@ namespace json
     {
         if(match(c, (char*)"true"))
         {
-            s(c+4, make_shared<JsonBooleanNode>(1));
+            s(c+4, make_shared<BooleanNode>(1));
             return true;
         }
         else if(match(c, (char*)"false"))
         {
-            s(c+5, make_shared<JsonBooleanNode>(0));
+            s(c+5, make_shared<BooleanNode>(0));
             return true;
         }
         return false;
@@ -61,9 +61,9 @@ namespace json
             ++c;
             while(*c >= '0' && *c <= '9') {str2 += *c; c++;}
             if(str2.length() == 0) return false;
-            s(c, make_shared<JsonFloatNode>(::atof((str1 + '.' + str2).c_str())));
+            s(c, make_shared<FloatNode>(::atof((str1 + '.' + str2).c_str())));
         } else {
-            s(c, make_shared<JsonIntNode>(::atoi(str1.c_str())));
+            s(c, make_shared<IntNode>(::atoi(str1.c_str())));
         }
         return true;
     }
@@ -94,7 +94,7 @@ namespace json
             //else if(match(c, (char*)"\\u")) {str+="\\u"; c+=6;} //todo handle /uXXXX correctly
             else {str += *c; c++;}
         }
-        s(c+1, make_shared<JsonStringNode>(str));
+        s(c+1, make_shared<StringNode>(str));
         return true;
     }
 
@@ -105,7 +105,7 @@ namespace json
         if(*c != '{') return false;
         c++;
         c=skipwhite(c);
-        shared_ptr<JsonObjectNode> objectNode = make_shared<JsonObjectNode>();
+        shared_ptr<ObjectNode> objectNode = make_shared<ObjectNode>();
         while(*c != '}')
         {
             if(!*c)
@@ -120,7 +120,7 @@ namespace json
                 if(stop_string(c,
                 [&](char *newC, nodeptr strptr) {
                     c = newC;
-                    key = ((JsonStringNode*)strptr.get())->value();
+                    key = ((StringNode*)strptr.get())->value();
 
                 },
                 [&](char *newC, string msg) {
@@ -187,7 +187,7 @@ namespace json
         if(*c != '[') return false;
         c++;
         c=skipwhite(c);
-        shared_ptr<JsonArrayNode> arrayNode = make_shared<JsonArrayNode>();
+        shared_ptr<ArrayNode> arrayNode = make_shared<ArrayNode>();
         while(*c != ']')
         {
             if(!*c)

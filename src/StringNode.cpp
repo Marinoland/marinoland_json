@@ -1,10 +1,10 @@
-#include "JsonStringNode.hpp"
+#include "json/StringNode.hpp"
 
 using namespace std;
 
 namespace json {
 
-    string JsonStringNode::to_json()
+    string StringNode::to_json()
     {
         string ret = "\"";
         for(char c : val)
@@ -22,7 +22,7 @@ namespace json {
         return ret;
     }
 
-    string JsonStringNode::to_string()
+    string StringNode::to_string()
     {
         return val;
     }

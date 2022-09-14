@@ -1,13 +1,12 @@
-#ifndef __JSONSTRINGNODE_HPP__
-#define __JSONSTRINGNODE_HPP__
+#pragma once
 
-#include "JsonNode.hpp"
+#include "json/Node.hpp"
 
 namespace json {
     using namespace std;
-    class JsonStringNode : public JsonNode {
+    class StringNode : public Node {
     public: 
-        JsonStringNode(string str) : val(str) {}
+        StringNode(string str) : val(str) {}
         string value() {return val;}
         string to_json();
         string to_string();
@@ -15,5 +14,3 @@ namespace json {
         string val;
     };
 }
-
-#endif

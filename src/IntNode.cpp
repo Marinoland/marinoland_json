@@ -1,8 +1,8 @@
-#include "JsonIntNode.hpp"
+#include "json/IntNode.hpp"
 
 using namespace std;
 namespace json {
-    string JsonIntNode::to_json() {
+    string IntNode::to_json() {
         return ::to_string(val);
     }
 }

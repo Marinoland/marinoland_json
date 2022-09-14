@@ -2,7 +2,7 @@
 #include <vector>
 #include <sstream>
 
-#include "Json.hpp"
+#include "json/Json.hpp"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     json::parse("[1, 2, 3]",
         [&] (json::nodeptr node) {
-            json::JsonArrayNode & arr = *(json::JsonArrayNode*)node.get();
+            json::ArrayNode & arr = *(json::ArrayNode*)node.get();
             stringstream strstr("");
             for (json::nodeptr node : arr) {
                 strstr << node->to_string();

@@ -1,13 +1,12 @@
-#ifndef __JSONOBJECTNODE_HPP__
-#define __JSONOBJECTNODE_HPP__
+#pragma once
 
-#include "JsonNode.hpp"
+#include "json/Node.hpp"
 #include <string>
 #include <map>
 
 namespace json {
     using namespace std;
-    class JsonObjectNode : public JsonNode {
+    class ObjectNode : public Node {
     public: 
         void set(string key, nodeptr);
         nodeptr get(string key);
@@ -17,11 +16,9 @@ namespace json {
         int getBoolean(string key);
         //deprecated
         virtual void asObject(objectCast fn){fn(*this);};
-        virtual JsonObjectNode* asObject(){ return this; };
+        virtual ObjectNode* asObject(){ return this; };
         string to_json();
     private:
         map<string, nodeptr> values;
     };
 }
-
-#endif
