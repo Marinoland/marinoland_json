@@ -120,7 +120,7 @@ namespace json
                 if(stop_string(c,
                 [&](char *newC, nodeptr strptr) {
                     c = newC;
-                    key = ((JsonStringNode*)strptr.get())->getString();
+                    key = ((JsonStringNode*)strptr.get())->value();
 
                 },
                 [&](char *newC, string msg) {

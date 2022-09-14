@@ -4,14 +4,15 @@
 #include "JsonNode.hpp"
 
 namespace json {
+    using namespace std;
     class JsonStringNode : public JsonNode {
     public: 
-        JsonStringNode(std::string str) : val(str) {}
-        std::string getString() {return val;}
-        std::string to_json();
-        std::string to_string();
+        JsonStringNode(string str) : val(str) {}
+        string value() {return val;}
+        string to_json();
+        string to_string();
     private:
-        std::string val;
+        string val;
     };
 }
 

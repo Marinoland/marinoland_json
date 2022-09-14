@@ -6,16 +6,21 @@
 #include <map>
 
 namespace json {
+    using namespace std;
     class JsonObjectNode : public JsonNode {
     public: 
-        void set(std::string key, nodeptr);
-        nodeptr get(std::string key);
+        void set(string key, nodeptr);
+        nodeptr get(string key);
+        string getString(string key);
+        int getInteger(string key);
+        float getFloat(string key);
+        int getBoolean(string key);
         //deprecated
         virtual void asObject(objectCast fn){fn(*this);};
         virtual JsonObjectNode* asObject(){ return this; };
-        std::string to_json();
+        string to_json();
     private:
-        std::map<std::string, nodeptr> values;
+        map<string, nodeptr> values;
     };
 }
 

@@ -1,4 +1,8 @@
 #include "JsonObjectNode.hpp"
+#include "JsonStringNode.hpp"
+#include "JsonIntNode.hpp"
+#include "JsonBooleanNode.hpp"
+#include "JsonFloatNode.hpp"
 #include <sstream>
 
 using namespace std;
@@ -9,6 +13,23 @@ namespace json {
 
     nodeptr JsonObjectNode::get(string key) {
         return values[key];
+    }
+
+    string JsonObjectNode::getString(string key) {
+        JsonStringNode* node = dynamic_cast<JsonStringNode*>(get(key).get());
+        return (node)?node->value():"";
+    }
+    int JsonObjectNode::getInteger(string key) {
+        JsonIntNode* node = dynamic_cast<JsonIntNode*>(get(key).get());
+        return (node)?node->value():0;
+    }
+    float JsonObjectNode::getFloat(string key) {
+        JsonFloatNode* node = dynamic_cast<JsonFloatNode*>(get(key).get());
+        return (node)?node->value():0;
+    }
+    int JsonObjectNode::getBoolean(string key) {
+        JsonBooleanNode* node = dynamic_cast<JsonBooleanNode*>(get(key).get());
+        return (node)?node->value():0;
     }
 
     string JsonObjectNode::to_json() {

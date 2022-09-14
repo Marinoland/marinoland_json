@@ -8,6 +8,7 @@ namespace json {
     public: 
         JsonIntNode(int i) : val(i) {}
         std::string to_json();
+        int value() { return val; }
     private:
         int val;
     };

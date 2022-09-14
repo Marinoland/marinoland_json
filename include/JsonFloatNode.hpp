@@ -9,6 +9,7 @@ namespace json {
     public: 
         JsonFloatNode(float newVal) : val(newVal){}
         std::string to_json();
+        float value() { return val; }
     private:
         float val;
     };
