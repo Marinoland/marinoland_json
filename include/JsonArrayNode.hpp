@@ -15,7 +15,9 @@ namespace json {
         std::vector<nodeptr>::iterator end() {
             return data.end();
         }
+        //deprecated
         virtual void asArray(arrayCast fn){fn(*this);};
+        virtual JsonArrayNode* asArray(){ return this; };
     private:
         std::vector<nodeptr> data;
     };
