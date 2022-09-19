@@ -54,7 +54,16 @@ int main(int argc, char **argv)
                 cerr << "FAILED. Expected (123) Got (" << strstr.str() << ")" << endl;
             }
         },
-        [&] (string msg) {
+        [] (string msg) {
+            cerr << "FAILED. " + msg << endl;
+        });
+
+    cout << "testing dotted path get() " << endl;
+    json::parse("{ \"a\": { \"b\": { \"c\": 42 } } }", 
+        [](json::nodeptr node){
+            cout << "Is it 42? " << node->asObject()->getInteger("a.b.c") << endl;
+        },
+        [](string msg) {
             cerr << "FAILED. " + msg << endl;
         });
     return 0;

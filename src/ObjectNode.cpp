@@ -4,6 +4,7 @@
 #include "json/BooleanNode.hpp"
 #include "json/FloatNode.hpp"
 #include <sstream>
+#include <iostream>
 
 using namespace std;
 namespace json {
@@ -12,7 +13,17 @@ namespace json {
     }
 
     nodeptr ObjectNode::get(string key) {
-        return values[key];
+        stringstream ss(key);
+        string word;
+        ObjectNode* parentObj = this;
+        nodeptr lastNode;
+        do {
+            getline(ss, word, '.');
+            if(!parentObj || !(lastNode = parentObj->values[word]))
+                return nodeptr();
+            parentObj = lastNode->asObject();
+        } while(!ss.eof());
+        return lastNode;
     }
 
     string ObjectNode::getString(string key) {
