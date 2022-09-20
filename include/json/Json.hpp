@@ -13,4 +13,5 @@
 
 namespace json {
     void parse(std::string src, std::function<void(nodeptr)> f, std::function<void(std::string)> e);
+    void fromFile(std::string filename, std::function<void(nodeptr)> f, std::function<void(std::string)> e);
 }

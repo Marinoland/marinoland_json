@@ -8,6 +8,19 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
+    /*
+    string path = argv[0];
+    json::nodeptr settings;
+    json::fromFile(path.substr(0, path.rfind("test")) + "blah.json",
+        [&settings] (json::nodeptr node) {
+            settings = node;
+            cout << "settings " << node->getString("a.b.c") << endl;
+        },
+        [] (string msg) {
+            cout << "ERROR getting settings " << msg << endl;
+        });
+        */
+
     vector<string> things_to_parse = {
         "null",
         "false",

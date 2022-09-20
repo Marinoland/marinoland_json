@@ -5,17 +5,23 @@
 #include <functional>
 
 namespace json {
+
+    using namespace std;
     //deprecated
     class ArrayNode;
-    typedef std::function<void(ArrayNode & node)> arrayCast;
+    typedef function<void(ArrayNode & node)> arrayCast;
     //deprecated
     class ObjectNode;
-    typedef std::function<void(ObjectNode & node)> objectCast;
+    typedef function<void(ObjectNode & node)> objectCast;
     
     class Node {
     public:
-        virtual std::string to_string() { return to_json(); }
-        virtual std::string to_json() { return ""; }
+        virtual string to_string() { return to_json(); }
+        virtual string to_json() { return ""; }
+        virtual string getString(string key) { return "";}
+        virtual int getInteger(string key) { return 0;}
+        virtual float getFloat(string key) { return 0;}
+        virtual int getBoolean(string key) { return 0;}
         //deprecated
         virtual void asArray(arrayCast fn){};
         //deprecated
@@ -24,5 +30,5 @@ namespace json {
         virtual ObjectNode* asObject(){ return 0; };
     private:
     };
-    typedef std::shared_ptr<Node> nodeptr;
+    typedef shared_ptr<Node> nodeptr;
 }

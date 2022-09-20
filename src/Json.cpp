@@ -1,5 +1,6 @@
 #include "json/Json.hpp"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -293,5 +294,16 @@ namespace json
         {
             f(msg + " : at position " + to_string(c-c_str));
         });
+    }
+
+    void fromFile(string filename, function<void(nodeptr)> s, function<void(string)> f) {
+        fstream in;
+        in.open(filename);
+        string buffer;
+        in.seekg(0, std::ios::end);
+        buffer.reserve(in.tellg());
+        in.seekg(0, std::ios::beg);
+        buffer.assign(istreambuf_iterator<char>(in), istreambuf_iterator<char>());
+        parse(buffer, s, f);
     }
 }
